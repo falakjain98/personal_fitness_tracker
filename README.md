@@ -11,7 +11,7 @@ The following technologies are utilized in this project:
   - [RDS](https://aws.amazon.com/rds/?nc2=h_ql_prod_fs_rds): *Database*
 - [Python (via Anaconda)](https://www.anaconda.com/products/distribution): *Programming Language*
 
-The entirety of this project is deployed using the AWS Free Tier, some Apple's Apps and an Amazfit fitness tracker that I own
+The entirety of this project is deployed using the AWS Free Tier, some Apple Apps and an Amazfit fitness tracker that I own
 
 ### Project Architecture
 
