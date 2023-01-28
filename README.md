@@ -9,6 +9,7 @@ The following technologies are utilized in this project:
   - [EC2](https://aws.amazon.com/ec2/?nc2=h_ql_prod_fs_ec2): *Virtual Machine*
   - [S3](https://aws.amazon.com/s3/?nc2=h_ql_prod_fs_s3): *Data Storage*
   - [RDS](https://aws.amazon.com/rds/?nc2=h_ql_prod_fs_rds): *Database*
+  - [Lambda](https://aws.amazon.com/lambda/): *Servless Function to Transfer Data from Storage to Database
 - [Python (via Anaconda)](https://www.anaconda.com/products/distribution): *Programming Language*
 
 The entirety of this project is deployed using the AWS Free Tier, some Apple Apps and an Amazfit fitness tracker that I own
