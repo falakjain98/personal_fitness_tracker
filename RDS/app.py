@@ -2,6 +2,7 @@ import sys
 import logging
 import pymysql
 import boto3
+import config
 
 s3_cient = boto3.client('s3')
 
@@ -23,37 +24,37 @@ except pymysql.MySQLError as e:
 
 logger.info("SUCCESS: Connection to RDS MySQL instance succeeded")
 
-# Read CSV file content from S3 bucket
-def read_data_from_s3(event):
-    bucket_name = 'apple-health-data'
-    s3_file_name = 'steps.csv'
-    resp = s3_cient.get_object(Bucket=bucket_name, Key=s3_file_name)
+bucket_name = 'apple-health-data'
+file_names = {'steps':'steps.csv',
+                'resting_energy':'resting_energy.csv',
+                'active_energy':'active_energy.csv',
+                'heart_rate':'heart_rate.csv',
+                'distance':'distance.csv'}
 
+# Read CSV file content from S3 bucket
+def read_data_from_s3(event,bucket_name,s3_file_name):
+    resp = s3_cient.get_object(Bucket=bucket_name, Key=s3_file_name)
     data = resp['Body'].read().decode('utf-8')
     data = data.split("\n")
     return data
 
 def handler(event, context):
-    logger.info("Reading Data")
-    data = read_data_from_s3(event)
-    logger.info("Data Read Successful")
     with conn.cursor() as cur:
-        #cur.execute("drop table steps")
-        cur.execute("create table IF NOT EXISTS steps (timestamp DATETIME NOT NULL, steps FLOAT NOT NULL)")
-        for emp in data: # Iterate over S3 csv file content and insert into MySQL database
-            try:
-                emp = emp.replace("\n","").split(",")
-                print (">>>>>>>"+str(emp))
-                cur.execute('insert into steps (timestamp,steps) values("'+str(emp[0])+'","'+str(emp[1])+'")')
-                conn.commit()
-            except:
-                continue
-        cur.execute("select count(*) from steps")
-        print ("Total records on DB :"+str(cur.fetchall()[0]))
-        # Display employee table records
-        # for row in cur:
-        #     print (row)
+        for key,file in file_names.items():
+            data = read_data_from_s3(event,bucket_name,file)
+            count = 0
+            #cur.execute("drop table steps")
+            cur.execute(f"create table IF NOT EXISTS {key} (timestamp DATETIME NOT NULL, {key} FLOAT NOT NULL, PRIMARY KEY (timestamp))")
+            for rec in data: # Iterate over S3 csv file content and insert into MySQL database
+                try:
+                    rec = rec.replace("\n","").split(",")
+                    cur.execute(f'insert ignore into {key} (timestamp,{key}) values("'+str(rec[0])+'","'+str(rec[1])+'")')
+                    count+=1
+                    conn.commit()
+                except:
+                    continue
+            print(f"Wrote {count} records to {key} table")
+            cur.execute(f"select count(distinct timestamp) from {key}")
+            print (f"Total records in {key} table  :"+str(cur.fetchall()[0]))
     if conn:
         conn.commit()
-        
-handler()
