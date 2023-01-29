@@ -16,7 +16,7 @@ The entirety of this project is deployed using the AWS Free Tier, some Apple App
 
 ### Project Architecture
 
-<img width="900" alt="image" src="https://user-images.githubusercontent.com/54712290/215236846-e726d138-92d1-446e-a966-2ca03e28c450.png">
+<img width="900" alt="image" src="https://user-images.githubusercontent.com/54712290/215350818-8b2a9321-13e6-4fc1-9220-7d3ceb5ae290.png">
 
 ### Dashboard
 
