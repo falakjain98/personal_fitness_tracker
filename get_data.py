@@ -20,7 +20,7 @@ def runcmd(cmd, verbose = False, *args, **kwargs):
 
 def get_data():
     # Change cwd
-    current_path = os.chdir('health_data/')
+    current_path = os.chdir('personal_fitness_tracker/health_data/')
     # Get date of data
     today = date.today() - timedelta(days=1)
 
