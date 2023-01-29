@@ -36,3 +36,11 @@
   - Log out and log back in using ```source .bashrc``` to complete installation
 - Create `config.py` and `RDS/config` files similar to the `config_example.py` and `RDS/config_example.py` files
 - `pip install` required libraries used in the python scripts: `subprocess`,`boto3`,`psycopg2`,`botocore`
+
+### 5. Create RDS MySQL database
+- I used the AWS free tier to create my database instance
+- Store database credentials in `RDS/config.py` file in order to run Lambda functions successfully
+
+### 6. Create an S3 bucket to upload csv files to
+
+### 7. Set up Lambda function - function to transfer files from S3 to RDS when a file is updated
