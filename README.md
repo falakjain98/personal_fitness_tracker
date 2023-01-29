@@ -22,7 +22,7 @@ The entirety of this project is deployed using the AWS Free Tier, some Apple App
 
 The dashboard which utilizes this pipeline can be viewed at https://lookerstudio.google.com/reporting/442ccfa2-0407-44b2-ba12-766d30b29c1c
 
-<img width="900" alt="image" src="https://user-images.githubusercontent.com/54712290/215350640-aef6828e-81f5-4e1f-9f70-8865d11317af.png">
+<img width="900" alt="image" src="https://user-images.githubusercontent.com/54712290/215236893-57c4af7e-1698-461b-b669-f2fc906b9a7d.png">
 
 ### Setup & Deploy
 Please refer to [setup](setup.md) file for more details regarding infrastructure setup.
