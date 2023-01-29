@@ -32,5 +32,7 @@
 - SSH into your EC2 instance and clone with Git repo
 - Install [Anaconda for Linux](https://www.anaconda.com/products/distribution)
   - Use wget to download latest Anaconda version for Linux
-  - Run the executable file with bash command
+  - Run the executable file with `bash file-name.sh` command
   - Log out and log back in using ```source .bashrc``` to complete installation
+- Create `config.py` and `RDS/config` files similar to the `config_example.py` and `RDS/config_example.py` files
+- `pip install` required libraries used in the python scripts: `subprocess`,`boto3`,`psycopg2`,`botocore`
