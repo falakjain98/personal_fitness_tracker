@@ -27,6 +27,8 @@ The dashboard which utilizes this pipeline can be viewed at https://lookerstudio
 ### Setup & Deploy
 Please refer to [setup](setup.md) file for more details regarding infrastructure setup.
 
+If you liked my project, please consider starring my repo!
+
 ### Learn More
 To learn more about Data and Analytics Engineering, check out [DataTalksClub's](https://github.com/DataTalksClub) amazing [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp)!
 
