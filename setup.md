@@ -39,8 +39,33 @@
 
 ### 5. Create RDS MySQL database
 - I used the AWS free tier to create my database instance
-- Store database credentials in `RDS/config.py` file in order to run Lambda functions successfully
+- Store database credentials in `RDS/config.py` file in order to successfully run Lambda functions
 
 ### 6. Create an S3 bucket to upload csv files to
+- Create an S3 bucket with a suitable name and update the AWS.py file accordingly
 
 ### 7. Set up Lambda function - function to transfer files from S3 to RDS when a file is updated
+- Create a new Lambda function with a name you prefer
+- Zip the contents of the `RDS` folder and upload to the Lambda function
+- This is the [resource that I referred to](https://github.com/prabhakar2020/insert_s3_csv_file_content_to_mysql_using_lambda)
+- Add an S3 trigger to your Lambda function so that the function runs whenever objects in S3 are updated
+- You can test your Lambda function to ensure data reads and database updates
+- This is what my Lambda function looks like:
+<img width="900" alt="image" src="https://user-images.githubusercontent.com/54712290/215379041-2df3fbfc-eece-4faf-903a-33d4afe92950.png">
+
+### 8. Create a 'Run Script Over SSH' Action
+- This action allows the python scripts to be run in the EC2 instance, from the convenience of your own phone
+- You will have the configure the Action with the public IP of your VM as well as the username
+- [Store the SSH key created by your Action in `~/.ssh/authorized_kays` file on EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replacing-key-pair.html)
+- In Script, enter `/home/ubuntu/anaconda3/bin/python personal_fitness_tracker/ingest_transform_s3.py`
+<img width="200" alt="image" src="https://user-images.githubusercontent.com/54712290/215380534-d88dc1cf-3d3b-4cd5-9e83-0c0dfb009a8b.png">
+
+- Add this action to the automation we created in step 3
+
+### 9. [Optional] Connect BI tool to RDS database to vizualize constantly updating data
+- I chose to connect a Google Data Studio report to the RDS instance and [visualize the data in this manner](https://lookerstudio.google.com/reporting/442ccfa2-0407-44b2-ba12-766d30b29c1c)
+- However, this step is optional and completely user dependent based on BI tool preferences
+
+### 10. Run complete pipeline
+- This concludes the pipeline setup, you can play the automation from your phone at the click of a button on a daily basis to ensure up to date data is stored in your RDS instance
+
