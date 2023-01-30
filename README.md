@@ -2,7 +2,7 @@
 
 ### Project Summary
 
-A pipeline to actively extract data from my fitness tracker and visualize fitness metrics and insights
+A pipeline to actively extract data from your activity tracker and visualize fitness metrics to draw insights
 
 The following technologies are utilized in this project:
 - [AWS Services](https://aws.amazon.com/): *Cloud platform*
