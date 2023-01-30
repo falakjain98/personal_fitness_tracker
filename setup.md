@@ -68,4 +68,5 @@
 
 ### 10. Run complete pipeline
 - This concludes the pipeline setup, you can play the automation from your phone at the click of a button on a daily basis to ensure up to date data is stored in your RDS instance
+- While I recommend a daily run, the Apple Shortcuts extracts data for the last 2 days to ensure no data points are missed. Even if a data point is captured on 2  consecutive days, duplicates are removed when writing to the database to ensure accurate results!
 
