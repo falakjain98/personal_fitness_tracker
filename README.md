@@ -12,7 +12,7 @@ The following technologies are utilized in this project:
   - [Lambda](https://aws.amazon.com/lambda/): *Servless Function to Transfer Data from Storage to Database*
 - [Python (via Anaconda)](https://www.anaconda.com/products/distribution): *Programming Language*
 
-The entirety of this project is deployed using the AWS Free Tier, some Apple Apps and an Amazfit fitness tracker that I own
+The entirety of this project is deployed using the AWS Free Tier, some Apple Apps and an Amazfit fitness tracker
 
 ### Project Architecture
 
