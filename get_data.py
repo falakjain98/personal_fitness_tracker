@@ -30,7 +30,10 @@ def get_data():
         runcmd(f'wget "https://docs.google.com/spreadsheets/d/{config.sheet_links[i]}/export?format=csv" -O "{i}.csv"')
         
         # Format downloaded data
-        df = pd.read_csv(f'{i}.csv',header = None)
+        try:
+            df = pd.read_csv(f'{i}.csv',header = None)
+        except:
+            continue
         df.rename(columns = {0:'timestamp',1:i},inplace = True)
         df.timestamp = pd.to_datetime(df.timestamp)
         df.to_csv(f'{i}.csv',header = False, index = None)
